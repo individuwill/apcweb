@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>APC Web</title>
+		<style>
+			table, tr, td, th {
+				border: thin solid black;
+				border-collapse: collapse;
+			}
+			td, th {
+				padding: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>APC Web</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Port #</th>
+					<th>Port Name</th>
+					<th>Port Status</th>
+					<th>Control</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for port_number in range(1, 9) %}
+				<tr>
+					<td>{{ port_number }}</td>
+					<td>{{ apc.port_name(port_number) }}</td>
+					<td>{{ apc.port_status_str(port_number) }}</td>
+					<td>
+						<form method="post" action="./change_status">
+							<input type="hidden" name="port_number" value="{{ port_number }}">
+							<input name= "new_status" type="submit" value="On">
+							<input name= "new_status" type="submit" value="Off">
+							<input name= "new_status" type="submit" value="Reboot">
+						</form>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<br />
+		<a href="http://apc.eskimoes.dyndns.org">Administer APC</a>
+	</body>
+</html>
