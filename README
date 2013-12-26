@@ -1,4 +1,17 @@
+### README ###
 apcweb is a python based web application I wrote to control an APC PDU (power strip) [ap9210] programmatically.
 
 The power_snmp.py file will allow command line control of the pdu
 or you can import it and make calls with your own application.
+
+! apcweb.conf is a hard link to a file in the apache configuration directory !
+
+###
+Requires:
+* python (built on 2.7)
+* flask
+* pysnmp (and its requirements)
+* apache 2 (wsgi module probably needs turned on)
+= built and tested on ubuntu 12.01 LTS. libraries and applications installed
+= via apt-get
+###
