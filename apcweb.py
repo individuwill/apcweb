@@ -12,6 +12,9 @@ app = Flask(__name__)
 
 HOST_NAME = 'apc'
 
+# when linking to the main page, don't use trailing slash
+# correct example: http://host:8080
+# reason: matching config between route below and the apache.conf file
 @app.route("/")
 def index():
 	apc = power_snmp.APC9210(HOST_NAME)
